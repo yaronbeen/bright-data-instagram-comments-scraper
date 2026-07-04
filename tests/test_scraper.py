@@ -129,7 +129,6 @@ class TestCollectByUrl(unittest.TestCase):
         call_kwargs = mock_post.call_args
         payload = call_kwargs.kwargs.get("json") or call_kwargs[1].get("json")
         self.assertIn("input", payload)
-        self.assertIn("limit_per_input", payload)
         self.assertIsInstance(payload["input"], list)
         self.assertIsInstance(payload["input"][0], dict)
         self.assertIn("url", payload["input"][0])
@@ -149,7 +148,7 @@ class TestCollectByUrl(unittest.TestCase):
         self.assertEqual(headers["Content-Type"], "application/json")
 
     @patch("instagram_comments_scraper.requests.post")
-    def test_limit_per_input_default_none(self, mock_post):
+    def test_limit_per_input_omitted_by_default(self, mock_post):
         mock_resp = MagicMock()
         mock_resp.json.return_value = []
         mock_resp.raise_for_status = MagicMock()
@@ -159,7 +158,7 @@ class TestCollectByUrl(unittest.TestCase):
 
         call_kwargs = mock_post.call_args
         payload = call_kwargs.kwargs.get("json") or call_kwargs[1].get("json")
-        self.assertIsNone(payload["limit_per_input"])
+        self.assertNotIn("limit_per_input", payload)
 
     @patch("instagram_comments_scraper.requests.post")
     def test_limit_per_input_custom_value(self, mock_post):
@@ -261,6 +260,19 @@ class TestCollectByUrl(unittest.TestCase):
         self.assertEqual(len(replies), 1)
         self.assertEqual(replies[0]["comment_user"], "pet_fan")
         self.assertEqual(replies[0]["comment"], "I agree!")
+
+    @patch("instagram_comments_scraper.requests.post")
+    def test_request_has_timeout(self, mock_post):
+        mock_resp = MagicMock()
+        mock_resp.json.return_value = []
+        mock_resp.raise_for_status = MagicMock()
+        mock_post.return_value = mock_resp
+
+        self.scraper.collect_by_url("https://www.instagram.com/p/test/")
+
+        call_kwargs = mock_post.call_args
+        timeout = call_kwargs.kwargs.get("timeout") or call_kwargs[1].get("timeout")
+        self.assertEqual(timeout, 30)
 
 
 class TestScraperConstants(unittest.TestCase):
