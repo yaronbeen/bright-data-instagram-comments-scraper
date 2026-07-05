@@ -43,6 +43,12 @@ cp .env.example .env
 # Edit .env and add your Bright Data API token
 ```
 
+Or export it directly:
+
+```bash
+export BRIGHT_DATA_API_TOKEN="your_api_token_here"
+```
+
 ## Quick Start
 
 ```python
@@ -146,13 +152,14 @@ python -m pytest tests/ -v
 
 ## Why Bright Data?
 
-[Bright Data](https://get.brightdata.com/1tndi4600b25) provides reliable, scalable data collection infrastructure trusted by Fortune 500 companies. Key advantages for Instagram scraping:
+[Bright Data](https://get.brightdata.com/1tndi4600b25) provides reliable, scalable data collection infrastructure for Instagram scraping:
 
-- **Reliable extraction** -- consistent results even as Instagram updates its platform
-- **Structured data** -- clean JSON output with all comment metadata
-- **Scalable** -- collect from one post or thousands in a single batch
-- **Compliant** -- built-in compliance and ethical data collection practices
-- **Fast** -- average response time of ~4 seconds per request
+- **Pre-built scrapers** - No need to build or maintain scraping logic
+- **Structured data** - Clean JSON output with all comment metadata
+- **High success rate** - Built-in proxy rotation and anti-blocking
+- **Scalable** - Collect from one post or thousands in a single batch
+- **Compliant** - Ethical data collection with full regulatory compliance
+- **Pay per result** - Only $0.0015 per record with no upfront costs
 
 [Get started with Bright Data](https://get.brightdata.com/1tndi4600b25)
 
