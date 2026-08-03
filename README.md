@@ -209,6 +209,14 @@ For full API documentation, see the [Bright Data API Reference](https://docs.bri
 
 [Get started with Bright Data](https://get.brightdata.com/1tndi4600b25)
 
+## Need a custom scraper?
+
+If you need more than the latest 15 comments or a different comment data structure, you can build your own scraper with [Bright Data's Scraper Studio](https://brightdata.com/products/scraper-studio). Describe the Instagram comment data you need in plain English, and Scraper Studio generates a production-ready scraper with your exact output schema. It includes self-healing, so when Instagram changes its comment rendering, you describe the fix and push a patch in minutes instead of rewriting parsing logic.
+
+## Free tier
+
+Every Bright Data account comes with 5,000 free credits per month (roughly $7.50 in value). Credits reset on the first of each month, and you can start without a credit card. That is enough to pull comment threads from several posts, inspect the reply structure, and decide whether this scraper meets your requirements.
+
 ## License
 
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
